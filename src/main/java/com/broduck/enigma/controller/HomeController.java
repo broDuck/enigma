@@ -3,7 +3,6 @@ package com.broduck.enigma.controller;
 import com.broduck.enigma.common.BroduckController;
 import com.broduck.enigma.common.BroduckControllerRq;
 import com.broduck.enigma.common.BroduckControllerRs;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ public class HomeController extends BroduckController {
      * @param rq
      * @return
      */
-    public ModelAndView main(HttpServletRequest request, @RequestBody BroduckControllerRq rq) {
+    public ModelAndView main(HttpServletRequest request, BroduckControllerRq rq) {
         BroduckControllerRs rs = new BroduckControllerRs();
         ModelAndView mv = this.initModel(request, rq, rs);
 
