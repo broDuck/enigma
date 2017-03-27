@@ -6,10 +6,12 @@
 
     <!-- Controller - URI Mapping  -->
     <bean id="controllerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="1" />
+        <property name="alwaysUseFullPath" value="true"/>
         <beans:property name="mappings">
             <beans:props>
                 <!-- Home -->
-                <beans:prop key="/">homeController</beans:prop>
+                <prop key="/home/**">homeController</prop>
 
             </beans:props>
         </beans:property>
@@ -26,5 +28,7 @@
 
     <!-- Controller - Class Mapping -->
     <bean id="homeController" class="com.broduck.enigma.controller.HomeController" />
+
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
 </beans>

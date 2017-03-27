@@ -3,6 +3,7 @@ package com.broduck.enigma.common;
 import com.broduck.enigma.model.LoginInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -15,6 +16,7 @@ import java.util.UUID;
  * Broduck 최상위 컨트롤러
  * Created by ydh0624 on 2017-03-27.
  */
+@Controller
 public class BroduckController extends MultiActionController {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -74,7 +76,8 @@ public class BroduckController extends MultiActionController {
     protected ModelAndView initModel(HttpServletRequest request, BroduckControllerRq rq, BroduckControllerRs rs) {
         HttpSession session = request.getSession();
         if (session != null) {
-            rq.setLoginInfo((LoginInfo) session.getAttribute(LoginInfo.class.getName()));
+            LoginInfo loginInfo = (LoginInfo) session.getAttribute(LoginInfo.class.getName());
+            rq.setLoginInfo(loginInfo);
 
             if (rq.getLoginInfo() != null)
                 rq.setLoginSn(rq.getLoginInfo().getMemberSn());

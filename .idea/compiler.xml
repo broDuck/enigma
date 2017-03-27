@@ -6,12 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="enigma-db" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="enigma" target="1.7" />
-      <module name="enigma-db" target="1.7" />
+      <module name="enigma" target="1.8" />
+      <module name="enigma-db" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

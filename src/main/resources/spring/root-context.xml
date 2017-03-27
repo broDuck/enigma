@@ -30,7 +30,4 @@
 
     <!-- view & tiles 설정 -->
     <beans:import resource="classpath:/view-tiles-context.xml"/>
-
-    <!-- controller & interceptor 설정 -->
-    <beans:import resource="classpath:/controller-interceptor-context.xml"/>
 </beans>
