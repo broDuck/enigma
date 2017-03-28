@@ -3,6 +3,8 @@ package com.broduck.enigma.controller;
 import com.broduck.enigma.common.BroduckController;
 import com.broduck.enigma.common.BroduckControllerRq;
 import com.broduck.enigma.common.BroduckControllerRs;
+import com.broduck.enigma.controller.rqrs.EnigmaControllerRq;
+import com.broduck.enigma.controller.rqrs.EnigmaControllerRs;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
  * 홈 컨트롤러
  * Created by ydh0624 on 2017-03-27.
  */
-@Controller
-@RequestMapping(value = "/**")
+
+
 public class HomeController extends BroduckController {
 
     /**
@@ -24,9 +26,8 @@ public class HomeController extends BroduckController {
      * @param rq
      * @return
      */
-    @RequestMapping(value = "main", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView main(HttpServletRequest request, BroduckControllerRq rq) {
-        BroduckControllerRs rs = new BroduckControllerRs();
+    public ModelAndView main(HttpServletRequest request, EnigmaControllerRq rq) {
+        EnigmaControllerRs rs = new EnigmaControllerRs();
         ModelAndView mv = this.initModel(request, rq, rs);
 
         try {

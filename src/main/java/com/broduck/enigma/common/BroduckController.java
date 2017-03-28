@@ -16,7 +16,6 @@ import java.util.UUID;
  * Broduck 최상위 컨트롤러
  * Created by ydh0624 on 2017-03-27.
  */
-@Controller
 public class BroduckController extends MultiActionController {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 

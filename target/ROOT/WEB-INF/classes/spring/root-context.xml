@@ -25,9 +25,9 @@
     <!-- resource 설정 -->
     <beans:import resource="classpath:/resource-context.xml"/>
 
+    <!-- controller-interceptor 설정 -->
+    <beans:import resource="classpath:/controller-interceptor-context.xml"/>
+
     <!-- gson 설정 -->
     <bean id="gson" class="com.google.gson.Gson"/>
-
-    <!-- view & tiles 설정 -->
-    <beans:import resource="classpath:/view-tiles-context.xml"/>
 </beans>

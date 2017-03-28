@@ -6,12 +6,10 @@
 
     <!-- Controller - URI Mapping  -->
     <bean id="controllerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="order" value="1" />
-        <property name="alwaysUseFullPath" value="true"/>
         <beans:property name="mappings">
             <beans:props>
                 <!-- Home -->
-                <prop key="/home/**">homeController</prop>
+                <prop key="/**">homeController</prop>
 
             </beans:props>
         </beans:property>
