@@ -9,8 +9,8 @@
         <beans:property name="mappings">
             <beans:props>
                 <!-- Home -->
-                <prop key="/**">homeController</prop>
-
+                <prop key="/">homeController</prop>
+                <prop key="/main/**">mainController</prop>
             </beans:props>
         </beans:property>
 
@@ -25,8 +25,8 @@
     </bean>
 
     <!-- Controller - Class Mapping -->
-    <bean id="homeController" class="com.broduck.enigma.controller.HomeController" />
-
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-
+    <bean id="homeController" class="com.broduck.enigma.controller.HomeController">
+        <property name="redirectPath" value="/main/readMain"/>
+    </bean>
+    <bean id="mainController" class="com.broduck.enigma.controller.MainController" />
 </beans>

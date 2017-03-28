@@ -1,16 +1,10 @@
 package com.broduck.enigma.controller;
 
 import com.broduck.enigma.common.BroduckController;
-import com.broduck.enigma.common.BroduckControllerRq;
-import com.broduck.enigma.common.BroduckControllerRs;
-import com.broduck.enigma.controller.rqrs.EnigmaControllerRq;
-import com.broduck.enigma.controller.rqrs.EnigmaControllerRs;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 홈 컨트롤러
@@ -20,23 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 
 public class HomeController extends BroduckController {
 
-    /**
-     * Main !!!
-     * @param request
-     * @param rq
-     * @return
-     */
-    public ModelAndView main(HttpServletRequest request, EnigmaControllerRq rq) {
-        EnigmaControllerRs rs = new EnigmaControllerRs();
-        ModelAndView mv = this.initModel(request, rq, rs);
+    private String redirectPath;
 
-        try {
-            rs.setIsSuccess(true);
-        } catch (Exception e) {
-            rs.setResultMessage("요청 실패");
-            rs.setIsSuccess(false);
-        }
+    @Override
+    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        response.sendRedirect(request.getServletContext().getContextPath() + redirectPath);
+        return null;
+    }
 
-        return mv;
+    public String getRedirectPath() {
+        return redirectPath;
+    }
+
+    public void setRedirectPath(String redirectPath) {
+        this.redirectPath = redirectPath;
     }
 }

@@ -72,7 +72,7 @@ public class BroduckController extends MultiActionController {
      * @param rs
      * @return
      */
-    protected ModelAndView initModel(HttpServletRequest request, BroduckControllerRq rq, BroduckControllerRs rs) {
+    protected ModelAndView initModel(HttpServletRequest request, HttpServletResponse response, BroduckControllerRq rq, BroduckControllerRs rs) {
         HttpSession session = request.getSession();
         if (session != null) {
             LoginInfo loginInfo = (LoginInfo) session.getAttribute(LoginInfo.class.getName());
