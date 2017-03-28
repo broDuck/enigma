@@ -7,6 +7,8 @@ import com.broduck.enigma.model.LoginInfo;
  * Created by ydh0624 on 2017-03-27.
  */
 public class BroduckControllerRq {
+    protected static final String RQ_KEY = "rq";
+
     protected LoginInfo loginInfo;
     protected int loginSn;
 

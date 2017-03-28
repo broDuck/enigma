@@ -83,8 +83,8 @@ public class BroduckController extends MultiActionController {
         }
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("rq", rq);
-        mv.addObject("rs", rs);
+        mv.addObject(BroduckControllerRq.RQ_KEY, rq);
+        mv.addObject(BroduckControllerRs.RS_KEY, rs);
 
         return mv;
     }

@@ -18,4 +18,12 @@ public class BroduckControllerRs {
     public void setResultMessage(String resultMessage) {
         this.resultMessage = resultMessage;
     }
+
+    public boolean getIsSuccess() {
+        return isSuccess;
+    }
+
+    public String getResultMessage() {
+        return resultMessage;
+    }
 }
