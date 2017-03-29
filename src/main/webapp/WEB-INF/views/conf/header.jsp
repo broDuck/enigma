@@ -14,8 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="${pageContext.request.contextPath}/resources/lib/jquery/dist/jquery.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-
     <script src="${pageContext.request.contextPath}/resources/lib/bootstrap-material-design/dist/bootstrap-material-design.iife.js"></script>
     <script src="${pageContext.request.contextPath}/resources/lib/bootstrap-material-design/dist/bootstrap-material-design.iife.js.map"></script>
     <script src="${pageContext.request.contextPath}/resources/lib/bootstrap-material-design/dist/bootstrap-material-design.iife.min.js"></script>

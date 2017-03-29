@@ -11,6 +11,7 @@
                 <!-- Home -->
                 <prop key="/">homeController</prop>
                 <prop key="/main/**">mainController</prop>
+                <prop key="/login/**">loginController</prop>
             </beans:props>
         </beans:property>
 
@@ -29,4 +30,5 @@
         <property name="redirectPath" value="/main/readMain"/>
     </bean>
     <bean id="mainController" class="com.broduck.enigma.controller.MainController" />
+    <bean id="loginController" class="com.broduck.enigma.controller.LoginController" />
 </beans>
