@@ -33,20 +33,20 @@
         <property name="timeBetweenEvictionRunsMillis" value="${enigma.jdbc.timeBetweenEvictionRunsMillis}"/>
     </bean>
 
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="enigma-dataSource" />-->
-        <!--<property name="configLocation" value="classpath:mybatis-config.xml" />-->
-        <!--<property name="mapperLocations">-->
-            <!--<array>-->
-                <!--<value>classpath*:/generate-sql/**/*.xml</value>-->
-                <!--<value>classpath*:/sql/**/*.xml</value>-->
-            <!--</array>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="enigma-dataSource" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:/generate-sql/**/*.xml</value>
+                <value>classpath:/sql/**/*.xml</value>
+            </array>
+        </property>
+    </bean>
 
-    <!--<bean id="enigma-sqlSession" class="org.mybatis.spring.SqlSessionTemplate">-->
-        <!--<constructor-arg ref="sqlSessionFactory" />-->
-    <!--</bean>-->
+    <bean id="enigma-sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" />
+    </bean>
 
     <bean id="enigma-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="enigma-dataSource" />
@@ -63,4 +63,7 @@
         <aop:pointcut id="serviceOperation" expression="execution(* com.broduck.enigma.service..*Service.*(..))" />
         <aop:advisor id="enigma-transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="enigma-txAdvice" />
     </aop:config>
+
+    <alias name="enigma-sqlSession" alias="sqlSession"/>
+
 </beans>

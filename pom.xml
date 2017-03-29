@@ -6,7 +6,7 @@
     <groupId>com.broduck</groupId>
     <artifactId>enigma</artifactId>
     <name>enigma</name>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <version>1.0.0-BUILD-SNAPSHOT</version>
     <properties>
         <java-version>1.8</java-version>
