@@ -1,0 +1,23 @@
+{
+  "name": "enigma",
+  "homepage": "https://github.com/broduck/enigma",
+  "authors": [
+    "broduck <ubroduck@gmail.com>"
+  ],
+  "description": "secret vote web application",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/resources/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap-material-design": "^4.0.2"
+  }
+}
