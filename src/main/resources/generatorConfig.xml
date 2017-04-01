@@ -44,14 +44,14 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
-        <table tableName="category" domainObjectName="Category"><property name="useActualColumnNames" value="false" /><generatedKey column="category_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="member" domainObjectName="Member"><property name="useActualColumnNames" value="false" /><generatedKey column="member_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="vote" domainObjectName="Vote"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="voteitem" domainObjectName="VoteItem"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_item_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="voteitemdetail" domainObjectName="VoteItemDetail"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_item_detail_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="votejoinmember" domainObjectName="VoteJoinMember"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_join_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="votekind" domainObjectName="VoteKind"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_kind_sn" sqlStatement="MySql" identity="true" /></table>
-        <table tableName="votekinddetail" domainObjectName="VoteKindDetail"><property name="useActualColumnNames" value="false" /><generatedKey column="vote_kind_detail_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="category" domainObjectName="Category"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="category_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="member" domainObjectName="Member"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="member_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="vote" domainObjectName="Vote"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="vote_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="voteitem" domainObjectName="VoteItem"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="vote_item_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="voteresult" domainObjectName="VoteResult"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /></table>
+        <table tableName="votejoinmember" domainObjectName="VoteJoinMember"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="vote_join_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="votekind" domainObjectName="VoteKind"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="vote_kind_sn" sqlStatement="MySql" identity="true" /></table>
+        <table tableName="votekinddetail" domainObjectName="VoteKindDetail"><property name="runtimeSchema" value="enigma"/><property name="useActualColumnNames" value="false" /><generatedKey column="vote_kind_detail_sn" sqlStatement="MySql" identity="true" /></table>
         <!-- AI 필드가 없는 경우 -->
         <!-- <table tableName="table_name" domainObjectName="LASTableName"><property name="useActualColumnNames" value="false" /></table> -->
         <!-- AI 필드가 있는 경우 -->
