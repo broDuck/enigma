@@ -19,10 +19,8 @@ var Signin = {
         $.ajax({
             url: '/login/signinProcess.json'
             , data: {
-                rq: JSON.stringify({
-                    email: email
-                    , password: password
-                })
+                email: email
+                , password: password
             }
         }).done(function (data) {
             console.log(data.rs);
