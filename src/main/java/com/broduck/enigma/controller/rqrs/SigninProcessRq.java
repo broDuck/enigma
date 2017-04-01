@@ -1,12 +1,10 @@
 package com.broduck.enigma.controller.rqrs;
 
-import com.broduck.enigma.common.BroduckControllerRs;
-
 /**
- * enigma 컨트롤러 rs
- * Created by ydh0624 on 2017-03-28.
+ * 로그인 프로세스 rq
+ * Created by ydh0624 on 2017-04-01.
  */
-public class EnigmaControllerRs extends BroduckControllerRs {
+public class SigninProcessRq extends EnigmaControllerRq {
     private String email;
     private String password;
 
