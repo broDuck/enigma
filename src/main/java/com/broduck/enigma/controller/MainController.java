@@ -22,19 +22,4 @@ public class MainController extends BroduckController {
 
         return mv;
     }
-
-    public ModelAndView jsonTest(HttpServletRequest request, HttpServletResponse response, @RequestBody EnigmaControllerRq rq) {
-        EnigmaControllerRs rs = new EnigmaControllerRs();
-        ModelAndView mv = this.initModel(request, response, rq, rs);
-
-        try {
-            rs.setResultMessage(rq.getText());
-            rs.setIsSuccess(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            rs.setIsSuccess(false);
-        }
-
-        return mv;
-    }
 }

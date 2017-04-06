@@ -55,4 +55,13 @@ public class MemberDao extends EnigmaDao implements IDataBase<Member> {
         
         return true;
     }
+
+    public boolean isExist(String email, String password) {
+        MemberExample example = new MemberExample();
+        example.createCriteria()
+                .andEmailEqualTo(email)
+                .andPasswordEqualTo(password);
+
+        return mapper.countByExample(example) > 0;
+    }
 }

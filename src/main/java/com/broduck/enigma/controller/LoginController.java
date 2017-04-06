@@ -1,9 +1,13 @@
 package com.broduck.enigma.controller;
 
 import com.broduck.enigma.common.BroduckController;
+import com.broduck.enigma.common.MessageException;
 import com.broduck.enigma.controller.rqrs.EnigmaControllerRq;
 import com.broduck.enigma.controller.rqrs.EnigmaControllerRs;
 import com.broduck.enigma.controller.rqrs.SigninProcessRq;
+import com.broduck.enigma.controller.rqrs.SignupProcessControllerRq;
+import com.broduck.enigma.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  * Created by broduck on 2017. 3. 29..
  */
 public class LoginController extends BroduckController {
+
+    @Autowired
+    private LoginService loginService;
 
     /**
      * 회원가입 페이지
@@ -32,6 +39,25 @@ public class LoginController extends BroduckController {
         } catch (Exception e) {
             rs.setIsSuccess(false);
             rs.setResultMessage("요청 실패");
+        }
+
+        return mv;
+    }
+
+    public ModelAndView signupProcess(HttpServletRequest request, HttpServletResponse response, SignupProcessControllerRq rq) {
+        EnigmaControllerRs rs = new EnigmaControllerRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            loginService.signup(rq.getEmail(), rq.getPassword(), rq.getAge(), rq.getMaleYn());
+
+            rs.setIsSuccess(true);
+        } catch (MessageException e) {
+            rs.setResultMessage(e.getMessage());
+            rs.setIsSuccess(false);
+        } catch (Exception e) {
+            rs.setResultMessage("요청 실패");
+            rs.setIsSuccess(false);
         }
 
         return mv;
@@ -63,10 +89,12 @@ public class LoginController extends BroduckController {
         ModelAndView mv = this.initModel(request, response, rq, rs);
 
         try {
-            rs.setEmail(rq.getEmail());
-            rs.setPassword(rq.getPassword());
+            loginService.signin(rq.getEmail(), rq.getPassword());
 
             rs.setIsSuccess(true);
+        } catch (MessageException e) {
+            rs.setResultMessage(e.getMessage());
+            rs.setIsSuccess(false);
         } catch (Exception e) {
             e.printStackTrace();
             rs.setIsSuccess(false);
