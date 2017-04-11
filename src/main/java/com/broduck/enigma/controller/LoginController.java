@@ -49,13 +49,14 @@ public class LoginController extends BroduckController {
         ModelAndView mv = this.initModel(request, response, rq, rs);
 
         try {
-            loginService.signup(rq.getEmail(), rq.getPassword(), rq.getAge(), rq.getMaleYn());
+            loginService.signup(rq.getEmail(), rq.getPassword(), rq.getNickName(), rq.getAge(), rq.getMaleYn());
 
             rs.setIsSuccess(true);
         } catch (MessageException e) {
             rs.setResultMessage(e.getMessage());
             rs.setIsSuccess(false);
         } catch (Exception e) {
+            e.printStackTrace();
             rs.setResultMessage("요청 실패");
             rs.setIsSuccess(false);
         }

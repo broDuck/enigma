@@ -23,7 +23,9 @@ var Signin = {
                 , password: password
             }
         }).done(function (data) {
-            console.log(data.rs);
+            if (data.rs.isSuccess) {
+                location.href = "/main/readMain";
+            }
         });
     }
 };

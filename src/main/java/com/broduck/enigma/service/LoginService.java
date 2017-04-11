@@ -24,10 +24,14 @@ public class LoginService {
         return true;
     }
 
-    public boolean signup(String email, String password, Integer age, Boolean maleYn) throws MessageException {
+    public boolean signup(String email, String password, String nickName, Integer age, Boolean maleYn) throws MessageException {
+        if (memberDao.isExist(email))
+            throw new MessageException("이메일 중복입니다.");
+
         Member member = new Member();
         member.setEmail(email);
         member.setPassword(password);
+        member.setNickname(nickName);
         member.setAge(age);
         member.setMaleYn(maleYn);
 

@@ -13,6 +13,8 @@
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputNickName" class="sr-only">NickName</label>
+        <input type="text" id="inputNickName" class="form-control" placeholder="NickName" required>
         <label for="inputAge" class="sr-only">나이</label>
         <input type="number" id="inputAge" class="form-control" placeholder="나이" required>
         <div class="checkSex">

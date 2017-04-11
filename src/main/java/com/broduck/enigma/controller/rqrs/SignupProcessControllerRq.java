@@ -7,6 +7,7 @@ package com.broduck.enigma.controller.rqrs;
 public class SignupProcessControllerRq extends EnigmaControllerRq {
     private String email;
     private String password;
+    private String nickName;
     private Integer age;
     private Boolean maleYn;
 
@@ -24,6 +25,14 @@ public class SignupProcessControllerRq extends EnigmaControllerRq {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public Integer getAge() {
