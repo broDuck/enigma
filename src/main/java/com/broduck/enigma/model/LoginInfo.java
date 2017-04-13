@@ -1,10 +1,14 @@
 package com.broduck.enigma.model;
 
+import java.io.Serializable;
+
 /**
  * 로그인 정보
  * Created by ydh0624 on 2017-03-28.
  */
-public class LoginInfo {
+public class LoginInfo implements Serializable {
+    private static final long serialVersionUID = 42L;
+
     private String email;
     private Integer memberSn;
     private Integer age;

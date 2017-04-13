@@ -78,6 +78,14 @@ public class LoginController extends BroduckController {
         ModelAndView mv = this.initModel(request, response, rq, rs);
 
         try {
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                LoginInfo loginInfo = (LoginInfo) session.getAttribute(LoginInfo.class.getName());
+                if (loginInfo != null) {
+                    response.sendRedirect("/");
+                }
+            }
+
             rs.setIsSuccess(true);
         } catch (Exception e) {
             rs.setIsSuccess(false);
@@ -93,11 +101,11 @@ public class LoginController extends BroduckController {
 
         try {
             loginService.signin(rq.getEmail(), rq.getPassword());
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession(false);
             if (session != null) {
                 LoginInfo loginInfo = loginService.readLoginInfo(rq.getEmail());
 
-                session.setAttribute("LoginInfo", loginInfo);
+                session.setAttribute(loginInfo.getClass().getName(), loginInfo);
             }
 
             rs.setIsSuccess(true);
