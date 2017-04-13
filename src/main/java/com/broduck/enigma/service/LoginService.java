@@ -3,6 +3,7 @@ package com.broduck.enigma.service;
 import com.broduck.enigma.common.MessageException;
 import com.broduck.enigma.dao.MemberDao;
 import com.broduck.enigma.generate.model.Member;
+import com.broduck.enigma.model.LoginInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,17 @@ public class LoginService {
         member.setMaleYn(maleYn);
 
         return memberDao.insert(member);
+    }
+
+    public LoginInfo readLoginInfo(String email) {
+        Member member = memberDao.selectByEmail(email);
+
+        LoginInfo loginInfo = new LoginInfo();
+        loginInfo.setEmail(member.getEmail());
+        loginInfo.setMemberSn(member.getMemberSn());
+        loginInfo.setAge(member.getAge());
+        loginInfo.setMaleYn(member.getMaleYn());
+
+        return loginInfo;
     }
 }

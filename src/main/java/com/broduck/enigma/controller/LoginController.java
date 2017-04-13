@@ -6,6 +6,7 @@ import com.broduck.enigma.controller.rqrs.EnigmaControllerRq;
 import com.broduck.enigma.controller.rqrs.EnigmaControllerRs;
 import com.broduck.enigma.controller.rqrs.SigninProcessRq;
 import com.broduck.enigma.controller.rqrs.SignupProcessControllerRq;
+import com.broduck.enigma.model.LoginInfo;
 import com.broduck.enigma.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 로그인 관련 컨트롤러
@@ -91,6 +93,12 @@ public class LoginController extends BroduckController {
 
         try {
             loginService.signin(rq.getEmail(), rq.getPassword());
+            HttpSession session = request.getSession();
+            if (session != null) {
+                LoginInfo loginInfo = loginService.readLoginInfo(rq.getEmail());
+
+                session.setAttribute("LoginInfo", loginInfo);
+            }
 
             rs.setIsSuccess(true);
         } catch (MessageException e) {

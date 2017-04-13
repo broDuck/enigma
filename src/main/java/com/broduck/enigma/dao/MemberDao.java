@@ -72,4 +72,11 @@ public class MemberDao extends EnigmaDao implements IDataBase<Member> {
 
         return mapper.countByExample(example) > 0;
     }
+
+    public Member selectByEmail(String email) {
+        MemberExample example = new MemberExample();
+        example.createCriteria().andEmailEqualTo(email);
+
+        return mapper.selectByExample(example).get(0);
+    }
 }
