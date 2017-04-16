@@ -12,6 +12,7 @@
                 <prop key="/">homeController</prop>
                 <prop key="/main/**">mainController</prop>
                 <prop key="/login/**">loginController</prop>
+                <prop key="/vote/**">voteController</prop>
             </beans:props>
         </beans:property>
     </bean>
@@ -30,8 +31,9 @@
 
     <!-- Controller - Class Mapping -->
     <bean id="homeController" class="com.broduck.enigma.controller.HomeController">
-        <property name="redirectPath" value="/main/readMain"/>
+        <property name="redirectPath" value="/vote/readVote"/>
     </bean>
     <bean id="mainController" class="com.broduck.enigma.controller.MainController" />
     <bean id="loginController" class="com.broduck.enigma.controller.LoginController" />
+    <bean id="voteController" class="com.broduck.enigma.controller.VoteController" />
 </beans>
