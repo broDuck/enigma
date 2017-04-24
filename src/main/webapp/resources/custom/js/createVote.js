@@ -3,19 +3,125 @@
  */
 
 var CreateVote = {
-    init: function () {
-        CreateVote.addEventListner();
+    categoryList: []
+
+    , init: function () {
+        CreateVote.addEventListener();
         CreateVote.drawVoteKind('OX');
+        CreateVote.drawVotePeriod('period');
+        CreateVote.readData();
     }
-    , addEventListner: function () {
-        $("[role=presentation]").on("click", function () {
-            $(".active").removeClass("active");
+    , readData: function () {
+        $.ajax({
+            url: '/vote/readCategoryList.json'
+            , data: {
+
+            }
+        }).done(function (data) {
+            let rs = data.rs;
+
+            if (rs.isSuccess) {
+                if (rs.categoryList != null) {
+                    CreateVote.categoryList = rs.categoryList;
+                    CreateVote.drawCategory();
+                }
+            } else {
+                alert(rs.resultMessage);
+            }
+        })
+    }
+    
+    , drawCategory: function () {
+        for (let i = 0; i < CreateVote.categoryList.length; i++) {
+            $("#categoryList").append('<li class="selectCategory" data-sn="' + CreateVote.categoryList[i].categorySn + '"><a href="#">' + CreateVote.categoryList[i].categoryName + '</a></li>')
+        }
+
+        $("#categoryList").children(".selectCategory").on("click", function () {
+            console.log(this);
+            $("#categoryList").children(".active").removeClass('active');
+            $(this).addClass("active");
+            console.log($(this).text());
+            $("#categoryBtn").html($(this).text());
+        });
+    }
+    
+    , addEventListener: function () {
+        $(".selectVoteKind").children("[role=presentation]").on("click", function () {
+            $(".selectVoteKind").children(".active").removeClass("active");
             $(this).addClass("active");
 
             CreateVote.drawVoteKind($(this).attr('id'));
         });
 
+        $(".selectVotePeriod").children("[role=presentation]").on("click", function () {
+            $(".selectVotePeriod").children(".active").removeClass("active");
+            $(this).addClass("active");
+
+            CreateVote.drawVotePeriod($(this).attr('id'));
+        });
+        
+        $("#createButton").on("click", function () {
+            CreateVote.createVote();
+        })
+
     }
+    
+    , createVote: function () {
+
+
+        let voteName = $("#inputVoteName").val();
+        let voteContent = $("#inputVoteContent").val();
+        let voteItemList = CreateVote.getVoteItemList();
+
+        let rq = {
+            voteName: voteName
+            , voteContent: voteContent
+            , voteItemList: voteItemList
+        };
+
+        console.log(rq);
+
+    }
+    , getVoteItemList: function() {
+        let voteItemList = [];
+
+        let id = $(".selectVoteKind").children('.active').attr('id');
+
+        if (id == 'OX') {
+            let voteItem1 = {
+                voteItemName: $("#OItemName").val()
+                , photo: '/resources/custom/img/oClipArt.png'
+            };
+
+            let voteItem2 = {
+                voteItemName: $("XItemName").val()
+                , photo: '/resources/custom/img/xClipArt.png'
+            };
+
+            voteItemList.push(voteItem1, voteItem2);
+
+        } else if (id == 'likeHate') {
+            let voteItem1 = {
+                voteItemName: $("#OItemName").val()
+                , photo: '/resources/custom/img/like.png'
+            };
+
+            let voteItem2 = {
+                voteItemName: $("XItemName").val()
+                , photo: '/resources/custom/img/hate.png'
+            };
+
+            voteItemList.push(voteItem1, voteItem2);
+        } else if (id == 'objective') {
+
+        } else if (id == 'image') {
+
+        }
+
+        return voteItemList;
+
+    }
+
     , drawVoteKind: function (id) {
         var voteKindHtml = '';
 
@@ -77,6 +183,23 @@ var CreateVote = {
 
             $("#imageItemList").append(temp);
         })
+    }
+    
+    , drawVotePeriod: function (id) {
+        let votePeriodHtml = '';
+
+        if (id == 'period') {
+            votePeriodHtml += '<div class="row">';
+            votePeriodHtml += '시작일 <input type="date" id="startDate">';
+            votePeriodHtml += '종료일 <input type="date" id="endDate">';
+            votePeriodHtml += '</div>';
+        } else if (id == 'count') {
+            votePeriodHtml += '<div class="row">';
+            votePeriodHtml += '목표 투표수 <input type="number" id="voeTargetCount"> 명';
+            votePeriodHtml += '</div>';
+        }
+
+        $("#votePeriodTemplate").html(votePeriodHtml);
     }
 };
 

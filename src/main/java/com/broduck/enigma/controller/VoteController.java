@@ -2,8 +2,11 @@ package com.broduck.enigma.controller;
 
 import com.broduck.enigma.common.BroduckController;
 import com.broduck.enigma.common.MessageException;
+import com.broduck.enigma.controller.rqrs.ReadCategoryListRs;
 import com.broduck.enigma.controller.rqrs.VoteControllerRq;
 import com.broduck.enigma.controller.rqrs.VoteControllerRs;
+import com.broduck.enigma.service.VoteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +23,9 @@ import java.util.UUID;
  * Created by ydh0624 on 2017-04-16.
  */
 public class VoteController extends BroduckController {
+
+    @Autowired
+    private VoteService voteService;
 
     public ModelAndView readVote(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
         VoteControllerRs rs = new VoteControllerRs();
@@ -107,6 +113,38 @@ public class VoteController extends BroduckController {
         } catch (Exception e) {
             rs.setResultMessage("요청 실패");
             rs.setIsSuccess(false);
+        }
+
+        return mv;
+    }
+
+    public ModelAndView generateVoteData(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
+        VoteControllerRs rs = new VoteControllerRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            voteService.generateVoteData();
+            rs.setIsSuccess(true);
+            rs.setResultMessage("성공적");
+        } catch (Exception e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage("오류!!!");
+        }
+
+        return mv;
+    }
+
+    public ModelAndView readCategoryList(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
+        ReadCategoryListRs rs = new ReadCategoryListRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            rs.setCategoryList(voteService.readVoteKindList());
+            rs.setIsSuccess(true);
+            rs.setResultMessage("성공");
+        } catch (Exception e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage("오류!");
         }
 
         return mv;
