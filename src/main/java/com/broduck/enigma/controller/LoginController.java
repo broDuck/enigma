@@ -95,7 +95,7 @@ public class LoginController extends BroduckController {
         return mv;
     }
 
-    public ModelAndView signinProcess(HttpServletRequest request, HttpServletResponse response, @RequestBody SigninProcessRq rq) {
+    public ModelAndView signinProcess(HttpServletRequest request, HttpServletResponse response, SigninProcessRq rq) {
         EnigmaControllerRs rs = new EnigmaControllerRs();
         ModelAndView mv = this.initModel(request, response, rq, rs);
 

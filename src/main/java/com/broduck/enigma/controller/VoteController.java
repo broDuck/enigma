@@ -8,8 +8,6 @@ import com.broduck.enigma.controller.rqrs.VoteControllerRq;
 import com.broduck.enigma.controller.rqrs.VoteControllerRs;
 import com.broduck.enigma.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -121,6 +119,13 @@ public class VoteController extends BroduckController {
         return mv;
     }
 
+    /**
+     * 투표 필수데이터 생성기
+     * @param request
+     * @param response
+     * @param rq
+     * @return
+     */
     public ModelAndView generateVoteData(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
         VoteControllerRs rs = new VoteControllerRs();
         ModelAndView mv = this.initModel(request, response, rq, rs);
@@ -137,6 +142,13 @@ public class VoteController extends BroduckController {
         return mv;
     }
 
+    /**
+     * 카테고리 목록 읽기
+     * @param request
+     * @param response
+     * @param rq
+     * @return
+     */
     public ModelAndView readCategoryList(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
         ReadCategoryListRs rs = new ReadCategoryListRs();
         ModelAndView mv = this.initModel(request, response, rq, rs);
@@ -153,7 +165,14 @@ public class VoteController extends BroduckController {
         return mv;
     }
 
-    public @ResponseBody ModelAndView saveVote(HttpServletRequest request, HttpServletResponse response, @RequestBody SaveVoteControllerRq rq) {
+    /**
+     * 투표 저장
+     * @param request
+     * @param response
+     * @param rq
+     * @return
+     */
+    public ModelAndView saveVote(HttpServletRequest request, HttpServletResponse response, SaveVoteControllerRq rq) {
         VoteControllerRs rs = new VoteControllerRs();
         ModelAndView mv = this.initModel(request, response, rq, rs);
 

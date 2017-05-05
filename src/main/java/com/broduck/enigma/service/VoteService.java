@@ -38,6 +38,10 @@ public class VoteService {
         return categoryDao.selectList();
     }
 
+    /**
+     * 투표 저장
+     * @param rq
+     */
     public void saveVote(SaveVoteControllerRq rq) {
         Vote vote = new Vote();
         vote.setVoteName(rq.getVoteName());

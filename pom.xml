@@ -54,6 +54,13 @@
             <version>${org.springframework-security-version}</version>
         </dependency>
 
+        <!-- beanUtil -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+
         <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>

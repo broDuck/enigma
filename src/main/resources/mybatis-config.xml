@@ -17,4 +17,5 @@
         <setting name="jdbcTypeForNull" value="OTHER" />
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
     </settings>
+
 </configuration>

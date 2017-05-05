@@ -19,7 +19,7 @@ var CreateVote = {
 
             }
         }).done(function (data) {
-            let rs = data.rs;
+            var rs = data.rs;
 
             if (rs.isSuccess) {
                 if (rs.categoryList != null) {
@@ -33,14 +33,14 @@ var CreateVote = {
     }
     
     , addVoteKeyword : function () {
-        let keywordHtml = $("#voteKeyword").html();
+        var keywordHtml = $("#voteKeyword").html();
         keywordHtml += "<input type='text' class='form-control keywordName' placeholder='키워드 입력'>";
 
         $("#voteKeyword").html(keywordHtml);
     }
     
     , drawCategory: function () {
-        for (let i = 0; i < CreateVote.categoryList.length; i++) {
+        for (var i = 0; i < CreateVote.categoryList.length; i++) {
             $("#categoryList").append('<li class="selectCategory" data-sn="' + CreateVote.categoryList[i].categorySn + '"><a href="#">' + CreateVote.categoryList[i].categoryName + '</a></li>')
         }
 
@@ -79,15 +79,15 @@ var CreateVote = {
     }
     
     , createVote: function () {
-        let voteName = $("#inputVoteName").val();
-        let voteContent = $("#inputVoteContent").val();
-        let voteItemList = CreateVote.getVoteItemList();
-        let categorySn = $(".selectCategory.active").attr("data-sn");
-        let period = CreateVote.getVotePeriod();
-        let voteKeywordList = CreateVote.getVoteKeywordList();
+        var voteName = $("#inputVoteName").val();
+        var voteContent = $("#inputVoteContent").val();
+        var voteItemList = CreateVote.getVoteItemList();
+        var categorySn = $(".selectCategory.active").attr("data-sn");
+        var period = CreateVote.getVotePeriod();
+        var voteKeywordList = CreateVote.getVoteKeywordList();
 
 
-        let rq = {
+        var rq = {
             voteName: voteName
             , voteContent: voteContent
             , voteItemList: voteItemList
@@ -103,12 +103,11 @@ var CreateVote = {
 
         $.ajax({
             url: '/vote/saveVote.json'
-            , method: 'post'
-            , type: 'json'
-            , contentType: 'application/json'
-            , data: JSON.stringify(rq)
+            , data: {
+                rq : JSON.stringify(rq)
+            }
         }).done(function (data) {
-            let rs = data.rs;
+            var rs = data.rs;
             if (rs.isSuccess) {
                 alert(rs.resultMessage);
             } else {
@@ -119,7 +118,7 @@ var CreateVote = {
 
     }
     , getVoteKeywordList: function () {
-        let keywordList = [];
+        var keywordList = [];
         
         $(".keywordName").each(function () {
             if ($(this).val() != '' && $(this).val() != 'undefined')
@@ -130,8 +129,8 @@ var CreateVote = {
     }
     
     , getVotePeriod: function() {
-        let id = $(".selectVotePeriod").children(".active").attr("id");
-        let data = {};
+        var id = $(".selectVotePeriod").children(".active").attr("id");
+        var data = {};
 
         if (id == 'period') {
             data = {
@@ -148,40 +147,40 @@ var CreateVote = {
     }
 
     , getVoteItemList: function() {
-        let voteItemList = [];
+        var voteItemList = [];
 
-        let id = $(".selectVoteKind").children('.active').attr('id');
+        var id = $(".selectVoteKind").children('.active').attr('id');
 
         if (id == 'OX') {
-            let voteItem1 = {
+            var voteItem1 = {
                 voteItemName: $("#OItemName").val()
                 , photo: '/resources/custom/img/oClipArt.png'
             };
 
-            let voteItem2 = {
-                voteItemName: $("XItemName").val()
+            var voteItem2 = {
+                voteItemName: $("#XItemName").val()
                 , photo: '/resources/custom/img/xClipArt.png'
             };
 
             voteItemList.push(voteItem1, voteItem2);
 
         } else if (id == 'likeHate') {
-            let voteItem1 = {
-                voteItemName: $("#OItemName").val()
+            var voteItem1 = {
+                voteItemName: $("#likeItemName").val()
                 , photo: '/resources/custom/img/like.png'
             };
 
-            let voteItem2 = {
-                voteItemName: $("XItemName").val()
+            var voteItem2 = {
+                voteItemName: $("#hateItemName").val()
                 , photo: '/resources/custom/img/hate.png'
             };
 
             voteItemList.push(voteItem1, voteItem2);
         } else if (id == 'objective') {
             $(".objectiveItemName").each(function () {
-                let itemName = $(this).val();
+                var itemName = $(this).val();
                 if (itemName != '' && itemName != 'undefined') {
-                    let voteItem = {
+                    var voteItem = {
                         voteItemName: $(this).val()
                     };
 
@@ -197,7 +196,7 @@ var CreateVote = {
     }
 
     , drawVoteKind: function (id) {
-        let voteKindHtml = '';
+        var voteKindHtml = '';
 
         if (id == 'OX') {
             voteKindHtml += '<div class="row">';
@@ -260,7 +259,7 @@ var CreateVote = {
     }
     
     , drawVotePeriod: function (id) {
-        let votePeriodHtml = '';
+        var votePeriodHtml = '';
 
         if (id == 'period') {
             votePeriodHtml += '<div class="row">';
