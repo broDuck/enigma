@@ -10,6 +10,7 @@ var CreateVote = {
         CreateVote.drawVoteKind('OX');
         CreateVote.drawVotePeriod('period');
         CreateVote.readData();
+        CreateVote.addVoteKeyword();
     }
     , readData: function () {
         $.ajax({
@@ -29,6 +30,13 @@ var CreateVote = {
                 alert(rs.resultMessage);
             }
         })
+    }
+    
+    , addVoteKeyword : function () {
+        let keywordHtml = $("#voteKeyword").html();
+        keywordHtml += "<input type='text' class='form-control keywordName' placeholder='키워드 입력'>";
+
+        $("#voteKeyword").html(keywordHtml);
     }
     
     , drawCategory: function () {
@@ -62,26 +70,83 @@ var CreateVote = {
         
         $("#createButton").on("click", function () {
             CreateVote.createVote();
-        })
+        });
+        
+        $("#addVoteKeyword").on("click", function () {
+            CreateVote.addVoteKeyword();
+        });
 
     }
     
     , createVote: function () {
-
-
         let voteName = $("#inputVoteName").val();
         let voteContent = $("#inputVoteContent").val();
         let voteItemList = CreateVote.getVoteItemList();
+        let categorySn = $(".selectCategory.active").attr("data-sn");
+        let period = CreateVote.getVotePeriod();
+        let voteKeywordList = CreateVote.getVoteKeywordList();
+
 
         let rq = {
             voteName: voteName
             , voteContent: voteContent
             , voteItemList: voteItemList
+            , categorySn: categorySn
+            , period: period
+            , ageOpenYn: $("[value=age]:checked").length
+            , sexOpenYn: $("[value=sex]:checked").length
+            , privateOpenYn: $("[value=private]:checked").length
+            , voteKeywordList: voteKeywordList
         };
 
         console.log(rq);
 
+        $.ajax({
+            url: '/vote/saveVote.json'
+            , method: 'post'
+            , type: 'json'
+            , contentType: 'application/json'
+            , data: JSON.stringify(rq)
+        }).done(function (data) {
+            let rs = data.rs;
+            if (rs.isSuccess) {
+                alert(rs.resultMessage);
+            } else {
+                alert(rs.resultMessage);
+            }
+        });
+
+
     }
+    , getVoteKeywordList: function () {
+        let keywordList = [];
+        
+        $(".keywordName").each(function () {
+            if ($(this).val() != '' && $(this).val() != 'undefined')
+                keywordList.push($(this).val());
+        });
+
+        return keywordList;
+    }
+    
+    , getVotePeriod: function() {
+        let id = $(".selectVotePeriod").children(".active").attr("id");
+        let data = {};
+
+        if (id == 'period') {
+            data = {
+                startDate: $("#startDate").val()
+                , endDate: $("#endDate").val()
+            };
+        } else {
+            data = {
+                count: $("#voteTargetCount").val()
+            };
+        }
+
+        return data;
+    }
+
     , getVoteItemList: function() {
         let voteItemList = [];
 
@@ -113,7 +178,16 @@ var CreateVote = {
 
             voteItemList.push(voteItem1, voteItem2);
         } else if (id == 'objective') {
+            $(".objectiveItemName").each(function () {
+                let itemName = $(this).val();
+                if (itemName != '' && itemName != 'undefined') {
+                    let voteItem = {
+                        voteItemName: $(this).val()
+                    };
 
+                    voteItemList.push(voteItem);
+                }
+            });
         } else if (id == 'image') {
 
         }
@@ -123,7 +197,7 @@ var CreateVote = {
     }
 
     , drawVoteKind: function (id) {
-        var voteKindHtml = '';
+        let voteKindHtml = '';
 
         if (id == 'OX') {
             voteKindHtml += '<div class="row">';
@@ -195,7 +269,7 @@ var CreateVote = {
             votePeriodHtml += '</div>';
         } else if (id == 'count') {
             votePeriodHtml += '<div class="row">';
-            votePeriodHtml += '목표 투표수 <input type="number" id="voeTargetCount"> 명';
+            votePeriodHtml += '목표 투표수 <input type="number" id="voteTargetCount"> 명';
             votePeriodHtml += '</div>';
         }
 

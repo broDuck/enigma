@@ -255,66 +255,6 @@ public class VoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andVoteKindSnIsNull() {
-            addCriterion("vote_kind_sn is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnIsNotNull() {
-            addCriterion("vote_kind_sn is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnEqualTo(Integer value) {
-            addCriterion("vote_kind_sn =", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnNotEqualTo(Integer value) {
-            addCriterion("vote_kind_sn <>", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnGreaterThan(Integer value) {
-            addCriterion("vote_kind_sn >", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnGreaterThanOrEqualTo(Integer value) {
-            addCriterion("vote_kind_sn >=", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnLessThan(Integer value) {
-            addCriterion("vote_kind_sn <", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnLessThanOrEqualTo(Integer value) {
-            addCriterion("vote_kind_sn <=", value, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnIn(List<Integer> values) {
-            addCriterion("vote_kind_sn in", values, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnNotIn(List<Integer> values) {
-            addCriterion("vote_kind_sn not in", values, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnBetween(Integer value1, Integer value2) {
-            addCriterion("vote_kind_sn between", value1, value2, "voteKindSn");
-            return (Criteria) this;
-        }
-
-        public Criteria andVoteKindSnNotBetween(Integer value1, Integer value2) {
-            addCriterion("vote_kind_sn not between", value1, value2, "voteKindSn");
-            return (Criteria) this;
-        }
-
         public Criteria andCategorySnIsNull() {
             addCriterion("category_sn is null");
             return (Criteria) this;
@@ -565,6 +505,76 @@ public class VoteExample {
             return (Criteria) this;
         }
 
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
         public Criteria andFinishYnIsNull() {
             addCriterion("finish_yn is null");
             return (Criteria) this;
@@ -745,133 +755,243 @@ public class VoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeIsNull() {
-            addCriterion("open_scope_code is null");
+        public Criteria andAgeOpenYnIsNull() {
+            addCriterion("age_open_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeIsNotNull() {
-            addCriterion("open_scope_code is not null");
+        public Criteria andAgeOpenYnIsNotNull() {
+            addCriterion("age_open_yn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeEqualTo(String value) {
-            addCriterion("open_scope_code =", value, "openScopeCode");
+        public Criteria andAgeOpenYnEqualTo(Boolean value) {
+            addCriterion("age_open_yn =", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeNotEqualTo(String value) {
-            addCriterion("open_scope_code <>", value, "openScopeCode");
+        public Criteria andAgeOpenYnNotEqualTo(Boolean value) {
+            addCriterion("age_open_yn <>", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeGreaterThan(String value) {
-            addCriterion("open_scope_code >", value, "openScopeCode");
+        public Criteria andAgeOpenYnGreaterThan(Boolean value) {
+            addCriterion("age_open_yn >", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("open_scope_code >=", value, "openScopeCode");
+        public Criteria andAgeOpenYnGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("age_open_yn >=", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeLessThan(String value) {
-            addCriterion("open_scope_code <", value, "openScopeCode");
+        public Criteria andAgeOpenYnLessThan(Boolean value) {
+            addCriterion("age_open_yn <", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeLessThanOrEqualTo(String value) {
-            addCriterion("open_scope_code <=", value, "openScopeCode");
+        public Criteria andAgeOpenYnLessThanOrEqualTo(Boolean value) {
+            addCriterion("age_open_yn <=", value, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeLike(String value) {
-            addCriterion("open_scope_code like", value, "openScopeCode");
+        public Criteria andAgeOpenYnIn(List<Boolean> values) {
+            addCriterion("age_open_yn in", values, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeNotLike(String value) {
-            addCriterion("open_scope_code not like", value, "openScopeCode");
+        public Criteria andAgeOpenYnNotIn(List<Boolean> values) {
+            addCriterion("age_open_yn not in", values, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeIn(List<String> values) {
-            addCriterion("open_scope_code in", values, "openScopeCode");
+        public Criteria andAgeOpenYnBetween(Boolean value1, Boolean value2) {
+            addCriterion("age_open_yn between", value1, value2, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeNotIn(List<String> values) {
-            addCriterion("open_scope_code not in", values, "openScopeCode");
+        public Criteria andAgeOpenYnNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("age_open_yn not between", value1, value2, "ageOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeBetween(String value1, String value2) {
-            addCriterion("open_scope_code between", value1, value2, "openScopeCode");
+        public Criteria andSexOpenYnIsNull() {
+            addCriterion("sex_open_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeNotBetween(String value1, String value2) {
-            addCriterion("open_scope_code not between", value1, value2, "openScopeCode");
+        public Criteria andSexOpenYnIsNotNull() {
+            addCriterion("sex_open_yn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnIsNull() {
-            addCriterion("wtire_subject_sn is null");
+        public Criteria andSexOpenYnEqualTo(Boolean value) {
+            addCriterion("sex_open_yn =", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnIsNotNull() {
-            addCriterion("wtire_subject_sn is not null");
+        public Criteria andSexOpenYnNotEqualTo(Boolean value) {
+            addCriterion("sex_open_yn <>", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnEqualTo(Integer value) {
-            addCriterion("wtire_subject_sn =", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnGreaterThan(Boolean value) {
+            addCriterion("sex_open_yn >", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnNotEqualTo(Integer value) {
-            addCriterion("wtire_subject_sn <>", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("sex_open_yn >=", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnGreaterThan(Integer value) {
-            addCriterion("wtire_subject_sn >", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnLessThan(Boolean value) {
+            addCriterion("sex_open_yn <", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnGreaterThanOrEqualTo(Integer value) {
-            addCriterion("wtire_subject_sn >=", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnLessThanOrEqualTo(Boolean value) {
+            addCriterion("sex_open_yn <=", value, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnLessThan(Integer value) {
-            addCriterion("wtire_subject_sn <", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnIn(List<Boolean> values) {
+            addCriterion("sex_open_yn in", values, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnLessThanOrEqualTo(Integer value) {
-            addCriterion("wtire_subject_sn <=", value, "wtireSubjectSn");
+        public Criteria andSexOpenYnNotIn(List<Boolean> values) {
+            addCriterion("sex_open_yn not in", values, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnIn(List<Integer> values) {
-            addCriterion("wtire_subject_sn in", values, "wtireSubjectSn");
+        public Criteria andSexOpenYnBetween(Boolean value1, Boolean value2) {
+            addCriterion("sex_open_yn between", value1, value2, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnNotIn(List<Integer> values) {
-            addCriterion("wtire_subject_sn not in", values, "wtireSubjectSn");
+        public Criteria andSexOpenYnNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("sex_open_yn not between", value1, value2, "sexOpenYn");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnBetween(Integer value1, Integer value2) {
-            addCriterion("wtire_subject_sn between", value1, value2, "wtireSubjectSn");
+        public Criteria andPrivateOpenYnIsNull() {
+            addCriterion("private_open_yn is null");
             return (Criteria) this;
         }
 
-        public Criteria andWtireSubjectSnNotBetween(Integer value1, Integer value2) {
-            addCriterion("wtire_subject_sn not between", value1, value2, "wtireSubjectSn");
+        public Criteria andPrivateOpenYnIsNotNull() {
+            addCriterion("private_open_yn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnEqualTo(Boolean value) {
+            addCriterion("private_open_yn =", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnNotEqualTo(Boolean value) {
+            addCriterion("private_open_yn <>", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnGreaterThan(Boolean value) {
+            addCriterion("private_open_yn >", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("private_open_yn >=", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnLessThan(Boolean value) {
+            addCriterion("private_open_yn <", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnLessThanOrEqualTo(Boolean value) {
+            addCriterion("private_open_yn <=", value, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnIn(List<Boolean> values) {
+            addCriterion("private_open_yn in", values, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnNotIn(List<Boolean> values) {
+            addCriterion("private_open_yn not in", values, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnBetween(Boolean value1, Boolean value2) {
+            addCriterion("private_open_yn between", value1, value2, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivateOpenYnNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("private_open_yn not between", value1, value2, "privateOpenYn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnIsNull() {
+            addCriterion("write_subject_sn is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnIsNotNull() {
+            addCriterion("write_subject_sn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnEqualTo(Integer value) {
+            addCriterion("write_subject_sn =", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnNotEqualTo(Integer value) {
+            addCriterion("write_subject_sn <>", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnGreaterThan(Integer value) {
+            addCriterion("write_subject_sn >", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnGreaterThanOrEqualTo(Integer value) {
+            addCriterion("write_subject_sn >=", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnLessThan(Integer value) {
+            addCriterion("write_subject_sn <", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnLessThanOrEqualTo(Integer value) {
+            addCriterion("write_subject_sn <=", value, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnIn(List<Integer> values) {
+            addCriterion("write_subject_sn in", values, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnNotIn(List<Integer> values) {
+            addCriterion("write_subject_sn not in", values, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnBetween(Integer value1, Integer value2) {
+            addCriterion("write_subject_sn between", value1, value2, "writeSubjectSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andWriteSubjectSnNotBetween(Integer value1, Integer value2) {
+            addCriterion("write_subject_sn not between", value1, value2, "writeSubjectSn");
             return (Criteria) this;
         }
 
@@ -880,8 +1000,8 @@ public class VoteExample {
             return (Criteria) this;
         }
 
-        public Criteria andOpenScopeCodeLikeInsensitive(String value) {
-            addCriterion("upper(open_scope_code) like", value.toUpperCase(), "openScopeCode");
+        public Criteria andContentLikeInsensitive(String value) {
+            addCriterion("upper(content) like", value.toUpperCase(), "content");
             return (Criteria) this;
         }
     }

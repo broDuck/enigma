@@ -12,6 +12,13 @@
     <div class="inputSpan">
         <span class="inputSpan">투표 내용<input id="inputVoteContent" class="form-control" type="text" placeholder="내용을 입력하세요"></span>
     </div>
+
+    <div>키워드 입력</div>
+    <button id="addVoteKeyword" class="btn btn-primary">키워드 추가</button>
+    <div class="row inputSpan" id="voteKeyword">
+
+    </div>
+
     <div class="inputSpan">
         <ul class="nav nav-tabs selectVoteKind">
             <li role="presentation" id="OX" class="active"><a href="#">O/X</a> </li>
@@ -40,7 +47,7 @@
             <button id="categoryBtn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">카테고리 선택<span class="caret"></span></button>
 
             <ul id="categoryList" class="dropdown-menu" role="menu">
-                <li><a href="#">글쎄?</a></li>
+
             </ul>
         </div>
     </div>
