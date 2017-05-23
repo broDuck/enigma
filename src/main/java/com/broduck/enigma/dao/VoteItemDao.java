@@ -3,6 +3,7 @@ package com.broduck.enigma.dao;
 import com.broduck.enigma.generate.dao.VoteItemMapper;
 import com.broduck.enigma.generate.model.VoteItem;
 import com.broduck.enigma.generate.model.VoteItemExample;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -54,5 +55,18 @@ public class VoteItemDao extends EnigmaDao implements IDataBase<VoteItem> {
         }
         
         return true;
+    }
+
+    public VoteItem select(Integer voteSn, Integer voteItemSn) {
+        VoteItemExample example = new VoteItemExample();
+        example.createCriteria()
+                .andVoteSnEqualTo(voteSn)
+                .andVoteItemSnEqualTo(voteItemSn);
+
+        List<VoteItem> list = mapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(list))
+            return null;
+
+        return list.get(0);
     }
 }

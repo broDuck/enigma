@@ -18,5 +18,6 @@
 
     <script src="${pageContext.request.contextPath}/resources/lib/jquery/dist/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/resources/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 
 

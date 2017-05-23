@@ -55,4 +55,21 @@ public class VoteJoinMemberDao extends EnigmaDao implements IDataBase<VoteJoinMe
         
         return true;
     }
+
+    public boolean isExist(int memberSn, Integer voteSn) {
+        VoteJoinMemberExample example = new VoteJoinMemberExample();
+        example.createCriteria()
+                .andMemberSnEqualTo(memberSn)
+                .andVoteSnEqualTo(voteSn);
+
+        return mapper.countByExample(example) > 0;
+    }
+
+    public boolean insert(int loginSn, Integer voteSn) {
+        VoteJoinMember data = new VoteJoinMember();
+        data.setMemberSn(loginSn);
+        data.setVoteSn(voteSn);
+
+        return insert(data);
+    }
 }

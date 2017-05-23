@@ -3,6 +3,7 @@ package com.broduck.enigma.dao;
 import com.broduck.enigma.generate.dao.MemberMapper;
 import com.broduck.enigma.generate.model.Member;
 import com.broduck.enigma.generate.model.MemberExample;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -78,5 +79,17 @@ public class MemberDao extends EnigmaDao implements IDataBase<Member> {
         example.createCriteria().andEmailEqualTo(email);
 
         return mapper.selectByExample(example).get(0);
+    }
+
+    public Member selectByMemberSn(int memberSn) {
+        MemberExample example = new MemberExample();
+        example.createCriteria()
+                .andMemberSnEqualTo(memberSn);
+
+        List<Member> list = mapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(list))
+            return null;
+
+        return list.get(0);
     }
 }

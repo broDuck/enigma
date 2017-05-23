@@ -313,6 +313,66 @@ public class VoteJoinMemberExample {
             addCriterion("member_sn not between", value1, value2, "memberSn");
             return (Criteria) this;
         }
+
+        public Criteria andVoteSnIsNull() {
+            addCriterion("vote_sn is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnIsNotNull() {
+            addCriterion("vote_sn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnEqualTo(Integer value) {
+            addCriterion("vote_sn =", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnNotEqualTo(Integer value) {
+            addCriterion("vote_sn <>", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnGreaterThan(Integer value) {
+            addCriterion("vote_sn >", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnGreaterThanOrEqualTo(Integer value) {
+            addCriterion("vote_sn >=", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnLessThan(Integer value) {
+            addCriterion("vote_sn <", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnLessThanOrEqualTo(Integer value) {
+            addCriterion("vote_sn <=", value, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnIn(List<Integer> values) {
+            addCriterion("vote_sn in", values, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnNotIn(List<Integer> values) {
+            addCriterion("vote_sn not in", values, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnBetween(Integer value1, Integer value2) {
+            addCriterion("vote_sn between", value1, value2, "voteSn");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteSnNotBetween(Integer value1, Integer value2) {
+            addCriterion("vote_sn not between", value1, value2, "voteSn");
+            return (Criteria) this;
+        }
     }
 
     /**

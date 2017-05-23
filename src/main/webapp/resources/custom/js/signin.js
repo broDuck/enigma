@@ -24,7 +24,7 @@ var Signin = {
             }
         }).done(function (data) {
             if (data.rs.isSuccess) {
-                location.href = "/main/readMain";
+                location.href = "/vote/readVote";
             } else {
                 alert(data.rs.resultMessage);
             }

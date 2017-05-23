@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vote">
+
+    <select id="selectVoteList" resultMap="selectVoteList">
+        SELECT
+            V.vote_sn AS voteSn
+            , V.vote_name AS voteName
+            , V.category_sn AS categorySn
+            , V.content AS content
+            , V.start_date AS startDate
+            , V.end_date AS endDate
+            , V.finish_yn AS finishYn
+            , V.target_config_yn AS targetConfigYn
+            , V.target_vote_count AS targetVoteCount
+            , V.age_open_yn AS ageOpenYn
+            , V.sex_open_yn AS sexOpenYn
+            , V.private_open_yn AS privateOpenYn
+        FROM
+            enigma.vote AS V
+
+        ORDER BY
+            V.vote_sn DESC
+    </select>
+
+    <resultMap id="selectVoteList" type="com.broduck.enigma.model.VoteVo">
+        <id property="voteSn" column="voteSn"/>
+        <collection property="voteItemList" select="selectVoteItemList" column="{voteSn=voteSn}"/>
+    </resultMap>
+
+    <select id="selectVoteItemList" resultType="com.broduck.enigma.generate.model.VoteItem">
+        SELECT
+            VI.vote_sn AS voteSn
+            , VI.vote_item_sn AS voteItemSn
+            , VI.vote_item_name AS voteItemName
+            , VI.photo AS photo
+        FROM
+            enigma.voteitem AS VI
+        WHERE
+            VI.vote_sn = #{voteSn}
+    </select>
+
+</mapper>

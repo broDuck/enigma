@@ -2,10 +2,7 @@ package com.broduck.enigma.controller;
 
 import com.broduck.enigma.common.BroduckController;
 import com.broduck.enigma.common.MessageException;
-import com.broduck.enigma.controller.rqrs.ReadCategoryListRs;
-import com.broduck.enigma.controller.rqrs.SaveVoteControllerRq;
-import com.broduck.enigma.controller.rqrs.VoteControllerRq;
-import com.broduck.enigma.controller.rqrs.VoteControllerRs;
+import com.broduck.enigma.controller.rqrs.*;
 import com.broduck.enigma.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
@@ -184,6 +181,66 @@ public class VoteController extends BroduckController {
             e.printStackTrace();
             rs.setIsSuccess(false);
             rs.setResultMessage("오류!");
+        }
+
+        return mv;
+    }
+
+    /**
+     * 투표 불러오기
+     * @param request
+     * @param response
+     * @param rq
+     * @return
+     */
+    public ModelAndView readVoteList(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
+        ReadVoteListRs rs = new ReadVoteListRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            rs.setVoteList(voteService.readVoteList());
+            rs.setIsSuccess(true);
+        } catch (MessageException e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            rs.setResultMessage("요청 실패");
+            rs.setIsSuccess(false);
+        }
+
+        return mv;
+    }
+
+    public ModelAndView vote(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
+        VoteControllerRs rs = new VoteControllerRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            voteService.vote(rq.getVoteSn(), rq.getVoteItemSn(), rq.getLoginSn());
+            rs.setIsSuccess(true);
+            rs.setResultMessage("투표가 완료되었습니다.");
+        } catch (MessageException e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            rs.setResultMessage("요청 실패패");
+            rs.setIsSuccess(false);
+        }
+
+        return mv;
+    }
+
+    public ModelAndView voteResult(HttpServletRequest request, HttpServletResponse response, VoteControllerRq rq) {
+        VoteControllerRs rs = new VoteControllerRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            rs.setIsSuccess(true);
+        } catch (Exception e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage("요청 실패");
         }
 
         return mv;
