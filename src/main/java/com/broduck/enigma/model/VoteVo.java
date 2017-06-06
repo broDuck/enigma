@@ -10,7 +10,16 @@ import java.util.List;
  * Created by broduck on 2017-05-10.
  */
 public class VoteVo extends Vote {
+    private String categoryName;
     private List<VoteItem> voteItemList;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public List<VoteItem> getVoteItemList() {
         return voteItemList;

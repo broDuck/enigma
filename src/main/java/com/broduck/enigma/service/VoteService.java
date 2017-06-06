@@ -4,12 +4,15 @@ import com.broduck.enigma.common.MessageException;
 import com.broduck.enigma.controller.rqrs.SaveVoteControllerRq;
 import com.broduck.enigma.dao.*;
 import com.broduck.enigma.generate.model.*;
+import com.broduck.enigma.model.VoteResultDetailVo;
+import com.broduck.enigma.model.VoteResultVo;
 import com.broduck.enigma.model.VoteVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import sun.misc.resources.Messages_es;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * 투표 서비스
@@ -121,5 +124,84 @@ public class VoteService {
         age = age / 10;
 
         return age * 10;
+    }
+
+    public List<VoteResultVo> readVoteResultList(Integer voteSn) throws MessageException {
+        List<VoteResult> voteResultList = voteResultDao.selectByVoteSn(voteSn);
+        List<VoteItem> voteItemList = voteItemDao.selectByVoteSn(voteSn);
+
+        if (CollectionUtils.isEmpty(voteResultList))
+            throw new MessageException("아직 투표가 되지 않았습니다. 투표의 첫 주인공이 되어보세요 :)");
+
+        List<VoteResultVo> resultList = new ArrayList<>();
+
+        for (VoteItem data : voteItemList) {
+            VoteResultVo result = new VoteResultVo();
+            result.setVoteItemSn(data.getVoteItemSn());
+            result.setVoteItemName(data.getVoteItemName());
+            result.setRankList(getDetailList(data.getVoteItemSn(), voteResultList));
+
+            Integer count = 0;
+            for (VoteResultDetailVo detail : result.getRankList()) {
+                count += detail.getVoteCount();
+            }
+
+            result.setVoteCount(count);
+
+            resultList.add(result);
+        }
+
+        return resultList;
+    }
+
+    private List<VoteResultDetailVo> getDetailList(Integer voteItemSn, List<VoteResult> list) {
+        Map<String, Integer> map = new HashMap<>();
+
+        for (VoteResult data : list) {
+            if (!voteItemSn.equals(data.getVoteItemSn())) continue;
+
+            String name = getName(data.getAgeKind(), data.getMaleKind());
+
+            Integer count = map.get(name);
+            if (count == null)
+                count = 0;
+
+            count += data.getVoteCount();
+
+            map.put(name, count);
+        }
+
+        List<VoteResultDetailVo> resultList = new ArrayList<>();
+
+        for (String name : map.keySet()) {
+            Integer count = map.get(name);
+
+            VoteResultDetailVo result = new VoteResultDetailVo();
+            result.setDetailName(name);
+            result.setVoteCount(count);
+
+            resultList.add(result);
+        }
+
+        if (resultList.size() < 3) {
+            for (int i = 1; i <= 3; i++) {
+                VoteResultDetailVo result = new VoteResultDetailVo();
+                result.setDetailName("투표결과 없음");
+                result.setVoteCount(0);
+
+                resultList.add(result);
+            }
+        }
+
+        resultList.sort(Comparator.comparing(VoteResultDetailVo::getVoteCount).reversed());
+
+        return resultList;
+    }
+
+    private String getName(Integer age, Boolean maleYn) {
+        String name = age.toString() + "대";
+        name += " " + (maleYn ? "남자" : "여자");
+
+        return name;
     }
 }

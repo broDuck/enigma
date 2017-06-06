@@ -37,7 +37,6 @@ var ReadVote = {
             if (rs.isSuccess) {
                 ReadVote.voteList = rs.voteList;
                 ReadVote.drawVote();
-                console.log(ReadVote.voteList);
             } else {
                 alert(rs.resultMessage);
             }
@@ -52,14 +51,15 @@ var ReadVote = {
             var voteHtml = '<div class="panel panel-default vote" data-sn="' + vote.voteSn + '">';
             voteHtml += '<div class="panel-heading">';
             voteHtml += '<h4>' + vote.voteName + '</h4>';
+            voteHtml += '<span class="navbar-right">' + vote.categoryName;
+            voteHtml += '<button class="btn btn-sm btn-primary resultButton" data-sn="' + vote.voteSn + '" data-toggle="modal" data-target="#voteResultModal">결과보기</button></span>';
+
             voteHtml += '<div class="clearfix"></div>';
             voteHtml += '<hr>' + vote.content + '<hr>';
             voteHtml += '<div class="row">';
 
-
             for (var j = 0; j < vote.voteItemList.length; j++) {
                 var voteItem = vote.voteItemList[j];
-
 
                 if (voteItem.photo !== null) {
                     voteHtml += '<div class="col-sm-3 voteItemArea">';
@@ -85,6 +85,68 @@ var ReadVote = {
 
         $(".voteItemArea").on("click", function () {
             $(this).children('.voteItem').attr('checked', 'checked');
+        });
+
+        $(".resultButton").on("click", function () {
+            console.log($(this).attr('data-sn'));
+
+            $.ajax({
+                url: '/vote/readVoteResult.json'
+                , data: {
+                    rq: JSON.stringify({
+                        voteSn: $(this).attr('data-sn')
+                    })
+                }
+            }).done(function (data) {
+                var rs = data.rs;
+
+                if (rs.isSuccess) {
+                    freqData = [];
+
+                    var list = rs.resultList;
+
+                    console.log(rs);
+
+                    for (var i = 0; i < list.length; i++) {
+                        var detail = list[i].rankList;
+
+                        detail.sort(function (a, b) {
+                            return b - a;
+                        });
+
+                        var first = detail[0] == 'undefined' ? 0 : detail[0].voteCount;
+                        var second = detail[1] == 'undefined' ? 0 : detail[1].voteCount;
+                        var third = detail[2] == 'undefined' ? 0 : detail[2].voteCount;
+
+                        var fName = {
+                            "first": "1위"
+                            , "second": "2위"
+                            , "third": "3위"
+                        };
+
+                        var obj = {
+                            State: list[i].voteItemName
+                            , freq: {
+                                first: first
+                                , second: second
+                                , third: third
+                            }
+                            , freqName: {
+                                'first': detail[0].detailName
+                                , 'second': detail[1].detailName
+                                , 'third': detail[2].detailName
+                            }
+                        };
+
+                        freqData.push(obj);
+                    }
+
+                    $("#dashboard").html("");
+                    dashboard('#dashboard', freqData, fName);
+                } else {
+                    alert(rs.resultMessage);
+                }
+            });
         });
 
         $(".voteClick").on("click", function () {

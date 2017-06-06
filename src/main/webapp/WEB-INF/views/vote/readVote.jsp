@@ -3,7 +3,7 @@
 <title>Enigma</title>
 
 <link href="${pageContext.request.contextPath}/resources/custom/css/readVote.css" rel="stylesheet">
-</head>
+<link href="${pageContext.request.contextPath}/resources/custom/css/voteResult.css" rel="stylesheet"></head>
 <body>
 <div class="wrapper">
     <div class="box">
@@ -150,7 +150,23 @@
                 </div>
             </div>
         </div>
+
+        <div id="voteResultModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        투표 결과
+                    </div>
+                    <div class="modal-body">
+                        <div id="dashboard"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <!-- script references -->
         <script src="${pageContext.request.contextPath}/resources/custom/js/readVote.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/custom/js/voteResult.js"></script>
 </body>
 </html>

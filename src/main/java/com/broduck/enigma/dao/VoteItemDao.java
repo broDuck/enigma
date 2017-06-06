@@ -69,4 +69,11 @@ public class VoteItemDao extends EnigmaDao implements IDataBase<VoteItem> {
 
         return list.get(0);
     }
+
+    public List<VoteItem> selectByVoteSn(Integer voteSn) {
+        VoteItemExample example = new VoteItemExample();
+        example.createCriteria().andVoteSnEqualTo(voteSn);
+
+        return mapper.selectByExample(example);
+    }
 }

@@ -71,4 +71,13 @@ public class VoteResultDao extends EnigmaDao implements IDataBase<VoteResult> {
 
         return list.get(0);
     }
+
+    public List<VoteResult> selectByVoteSn(Integer voteSn) {
+        VoteResultExample example = new VoteResultExample();
+        example.createCriteria().andVoteSnEqualTo(voteSn);
+
+        example.setOrderByClause("vote_item_sn ASC, age_kind ASC, male_kind ASC");
+
+        return mapper.selectByExample(example);
+    }
 }

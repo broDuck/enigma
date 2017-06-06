@@ -1,7 +1,7 @@
 /**
  * Created by broduck on 2017-05-23.
  */
-function dashboard(id, fData) {
+function dashboard(id, fData, fName) {
     var barColor = 'steelblue';
 
     function segColor(c) {
@@ -227,6 +227,11 @@ function dashboard(id, fData) {
                 return getLegend(d, lD);
             });
 
+        tr.append("td").attr("class", 'legendName')
+            .text(function (d) {
+                return getLegendName(d)
+            });
+
         // Utility function to be used to update the legend.
         leg.update = function (nD) {
             // update the data attached to the row elements.
@@ -241,6 +246,10 @@ function dashboard(id, fData) {
             l.select(".legendPerc").text(function (d) {
                 return getLegend(d, nD);
             });
+
+            l.select(".legendName").text(function (d) {
+                return getLegendName(d);
+            });
         }
 
         function getLegend(d, aD) { // Utility function to compute percentage.
@@ -249,10 +258,14 @@ function dashboard(id, fData) {
                 })));
         }
 
+        function getLegendName(d) {
+            return d.freqName
+        }
+
         return leg;
     }
 
-    var tFname = {"first": "1위", "second": "2위", "third": "3위"};
+    tFname = fName;
 
     // calculate total frequency by segment for all state.
     var tF = ['first', 'second', 'third'].map(function (d) {
@@ -294,5 +307,3 @@ var freqData = [
 //         })
 //     }
 // })
-
-dashboard('#dashboard', freqData);
