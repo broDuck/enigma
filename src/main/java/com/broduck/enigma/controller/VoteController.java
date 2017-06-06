@@ -245,4 +245,22 @@ public class VoteController extends BroduckController {
 
         return mv;
     }
+
+    public ModelAndView readVoteResult(HttpServletRequest request, HttpServletResponse response, ReadVoteResultRq rq) {
+        ReadVoteResultRs rs = new ReadVoteResultRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            voteService.readVoteList();
+        } catch (MessageException e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage(e.getMessage());
+        } catch (Exception e) {
+            rs.setIsSuccess(false);
+            rs.setResultMessage("요청 실패");
+        }
+
+        return mv;
+    }
+
 }

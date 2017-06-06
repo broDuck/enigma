@@ -17,7 +17,12 @@ var ReadVote = {
     , selectVoteItemSn: 0
     , init : function () {
         ReadVote.readVoteList();
-
+        ReadVote.attachEvent();
+    }
+    , attachEvent: function () {
+        $("#signout").on("click", function () {
+            ReadVote.signout();
+        });
     }
     , readVoteList: function () {
         var rq = {};
@@ -56,7 +61,6 @@ var ReadVote = {
                 var voteItem = vote.voteItemList[j];
 
 
-
                 if (voteItem.photo !== null) {
                     voteHtml += '<div class="col-sm-3 voteItemArea">';
                     voteHtml += '<img src="' + voteItem.photo + '" class="img-thumbnail img-vote">';
@@ -93,7 +97,7 @@ var ReadVote = {
                 $.ajax({
                     url: '/vote/vote.json'
                     , data: {
-                        rq : JSON.stringify({
+                        rq: JSON.stringify({
                             voteSn: ReadVote.selectVoteSn
                             , voteItemSn: ReadVote.selectVoteItemSn
                         })
@@ -105,6 +109,15 @@ var ReadVote = {
                 });
             }
         });
+    }
+    , signout: function () {
+        $.ajax({
+            url: '/login/signoutProcess.json'
+        }).done(function (data) {
+            if (data.rs.isSuccess) {
+                location.href = "/login/signin";
+            }
+        })
     }
 };
 

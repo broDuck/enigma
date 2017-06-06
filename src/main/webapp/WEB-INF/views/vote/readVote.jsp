@@ -10,34 +10,8 @@
         <div class="row row-offcanvas row-offcanvas-left">
 
 
-            <!-- sidebar -->
-            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-
-                <ul class="nav">
-                    <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i
-                            class="glyphicon glyphicon-chevron-right"></i></a></li>
-                </ul>
-
-                <ul class="nav hidden-xs" id="lg-menu">
-                    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> 메뉴 1</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> 메뉴 2</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> 메뉴 3</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> 메뉴 4</a></li>
-                </ul>
-
-                <!-- tiny only nav-->
-                <ul class="nav visible-xs" id="xs-menu">
-                    <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
-                    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
-                    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
-                </ul>
-
-            </div>
-            <!-- /sidebar -->
-
             <!-- main right col -->
-            <div class="column col-sm-10 col-xs-11" id="main">
+            <div class="column col-sm-12 col-xs-12" id="main">
 
                 <!-- top nav -->
                 <div class="navbar navbar-blue navbar-static-top">
@@ -84,18 +58,19 @@
                                 </ul>
                             </li>
                         </ul>
+                        <button class="btn btn-danger navbar-right" id="signout">Sign out</button>
                     </nav>
                 </div>
                 <!-- /top nav -->
 
                 <div class="padding">
-                    <div class="full col-sm-9">
+                    <div class="full col-sm-12">
 
                         <!-- content -->
                         <div class="row">
 
                             <!-- main col right -->
-                            <div class="col-sm-6" id="voteList">
+                            <div class="col-sm-12" id="voteList">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4>제목?</h4>

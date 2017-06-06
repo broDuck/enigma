@@ -286,13 +286,13 @@ var freqData = [
     , {State: 'KS', freq: {first: 162, second: 379, third: 471}}
 ];
 
-$.ajax({
-    url: '/vote/readVoteResult.json'
-    , data: {
-        rq: JSON.stringify({
-            voteSn:
-        })
-    }
-})
+// $.ajax({
+//     url: '/vote/readVoteResult.json'
+//     , data: {
+//         rq: JSON.stringify({
+//             voteSn:
+//         })
+//     }
+// })
 
 dashboard('#dashboard', freqData);

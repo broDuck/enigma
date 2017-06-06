@@ -2,10 +2,7 @@ package com.broduck.enigma.controller;
 
 import com.broduck.enigma.common.BroduckController;
 import com.broduck.enigma.common.MessageException;
-import com.broduck.enigma.controller.rqrs.EnigmaControllerRq;
-import com.broduck.enigma.controller.rqrs.EnigmaControllerRs;
-import com.broduck.enigma.controller.rqrs.SigninProcessRq;
-import com.broduck.enigma.controller.rqrs.SignupProcessControllerRq;
+import com.broduck.enigma.controller.rqrs.*;
 import com.broduck.enigma.model.LoginInfo;
 import com.broduck.enigma.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +109,26 @@ public class LoginController extends BroduckController {
         } catch (MessageException e) {
             rs.setResultMessage(e.getMessage());
             rs.setIsSuccess(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+            rs.setIsSuccess(false);
+        }
+
+        return mv;
+    }
+
+    public ModelAndView signoutProcess(HttpServletRequest request, HttpServletResponse response, SignoutProcessRq rq) {
+        EnigmaControllerRs rs = new EnigmaControllerRs();
+        ModelAndView mv = this.initModel(request, response, rq, rs);
+
+        try {
+            HttpSession session = request.getSession(false);
+            session.removeAttribute(LoginInfo.class.getName());
+
+            mv = this.initModel(request, response, rq, rs);
+
+            rs.setIsSuccess(true);
+
         } catch (Exception e) {
             e.printStackTrace();
             rs.setIsSuccess(false);
