@@ -17,8 +17,11 @@
             , V.age_open_yn AS ageOpenYn
             , V.sex_open_yn AS sexOpenYn
             , V.private_open_yn AS privateOpenYn
+            , C.category_name AS categoryName
         FROM
             enigma.vote AS V
+            INNER JOIN enigma.category AS C
+                ON C.category_sn = V.category_sn
 
         ORDER BY
             V.vote_sn DESC
